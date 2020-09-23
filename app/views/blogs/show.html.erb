@@ -1,0 +1,20 @@
+<h1>ブログ詳細画面</h1>
+<p>内容: <%= @blog.content %></p>
+<p>投稿者名: <%= @blog.user.firstname %><%= @blog.user.name %></p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @blog.image.url if @blog.image? %>
+</p>
+<% if @blog.user_id == current_user.id %>
+  <div>
+    <td><%= link_to "ブログを編集する", "/blogs/#{@blog.id}/edit" %></td>
+    <td><%= link_to 'ブログを削除する', blog_path, method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+  </div>
+<% end %>
+<% unless @blog.user_id == current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

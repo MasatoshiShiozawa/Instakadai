@@ -1,16 +1,17 @@
-<h1>ブログ一覧</h1>
+<h1>FACEPAGEみんなの投稿一覧</h1>
+<p>ログインすると、詳細ページへアクセスでき、お気に入り登録ができます。</p>
 <p><%= notice %></p>
-<table>
-  <tr>
-    <th>内容</th>
-    <th>投稿者名</th>
-  </tr>
 <% @blogs.each do |blog| %>
-  <tr>
-    <td><%= blog.content %></td>
-    <td><%= blog.user.firstname %><%= blog.user.name %></td>
-    <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
-  </tr>
+■<%= blog.user.firstname %><%= blog.user.name %>さんの投稿<br>
+<%= blog.created_at %><br>
+<%= blog.content %><br>
+<%= image_tag blog.image.url if blog.image? %>
+<br>
+<% if logged_in? %>
+<%= link_to '詳細を確認する', blog_path(blog.id) %><br>
 <% end %>
-</table>
-<%= link_to '新しくブログを投稿する', new_blog_path %>
+<hr width="800" noshade>
+<% end %>
+<% if logged_in? %>
+  <%= link_to '新しくブログを投稿する', new_blog_path %>
+<% end %>

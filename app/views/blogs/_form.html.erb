@@ -13,7 +13,7 @@
 
   <div class="blog_title">
     <%= form.label :content %>
-    <%= form.text_field :content %>
+    <%= form.text_area :content, :size=>"100x5" %>
   </div>
   <div class="blog_title">
     <%= form.label :"画像" %>
@@ -22,4 +22,5 @@
   <%= form.submit %>
 <% end %>
 
-<%= link_to "ブログ一覧画面にもどる", blogs_path %>
+<%= link_to "みんなの投稿一覧にもどる", blogs_path %><br>
+<%= link_to "マイページに戻る", user_path(current_user.id) %>

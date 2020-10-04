@@ -2,21 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .container {
-  width: 980px;
+  width: 800px;
   margin: 0 auto;
   position: relative;
   min-height: 100%;
 }
 .side_menu{
-  width: 300px;
+  width: 200px;
   float: left;
 }
 .content{
-  width: 660px;
+  width: 800px;
   margin-left:20px;
   float: left;
   font-size: 1.5rem;
-  background-color: #F5B4B3;
 }
 .wrapper{
   margin-top: 10px;
@@ -24,7 +23,7 @@
 }
 .header {
   background-color: #F5B4B3;
-  height: 200px;
+  height: 150px;
   font-size: 1.5rem;
 }
 .footer{

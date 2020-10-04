@@ -1,0 +1,21 @@
+<h1>FACEPAGE　マイプロフィール編集</h1>
+<p>パスワード変更がない場合も、再入力をお願いします。</p>
+
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= f.label :"姓" %>
+  <%= f.text_field :firstname %><br>
+  <%= f.label :"名" %>
+  <%= f.text_field :name %><br>
+  <%= f.label :"自己紹介" %>
+  <%= f.text_area :profile_text, :size=>"50x2" %><br>
+  <%= f.label :email %>
+  <%= f.email_field :email %><br>
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %><br>
+  <%= f.submit "更新する" %>
+<% end %>
+
+<%= link_to "みんなの投稿に戻る", user_path(current_user.id) %><br>
+<%= link_to "マイページに戻る", user_path(current_user.id) %>

@@ -1,32 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-</head>
-<body>
-  <div class="container">
-    <header class="header clearfix">
-      <h1><%= @user.firstname %><%= @user.name %></h1>
-      <%= @user.profile_text%>
-      <% if @user == current_user %>
-      <%= link_to 'その気持ち、シェアしよう', new_blog_path %>
-      <% end %>
-    </header>
-    <div class="wrapper clearfix">
-    <aside class="side_menu">
-      自己紹介
-    </aside>
-    <div class="content">
+<header class="header clearfix">
+  <h1><%= @user.firstname %><%= @user.name %>のページ</h1>
+  ■自己紹介<br>
+  <%= @user.profile_text%><br>
+  <%#= image_tag @user.profile_image.url if @user.profile_image? %>
+  <% if @user == current_user %>
+  <%= link_to 'その気持ち、シェアしよう', new_blog_path %>　　
+  <%= link_to 'プロフィール・自己紹介文編集', edit_user_path %><br>
+  <% end %>
+</header>
+<br>
+
+  <article class="contett">
+    <div>
+      <% @user.blogs.each do |blog| %>
       <div>
-        <% @user.blogs.each do |blog| %>
-        <div>
-          <p><%= blog.user.firstname %><%= blog.user.name %></p>
-          <p><%= blog.content %></p>
-          <p><%= image_tag blog.image.url if blog.image? %></p>
-        </div>
-        <% end %>
+        <p><%= blog.user.firstname %><%= blog.user.name %></p>
+        <p><%= blog.created_at %></p>
+        <p><%= blog.content %></p>
+        <p><%= image_tag blog.image.url if blog.image? %></p><br>
+        <hr width="800" noshade>
       </div>
+      <% end %>
     </div>
-  </div>
-</body>
-</html>
+  </article>

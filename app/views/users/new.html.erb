@@ -1,4 +1,4 @@
-<h1>Sign up</h1>
+<h1>FACEPAGE ユーザー登録</h1>
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
@@ -11,14 +11,26 @@
 <% end %>
 <%= form_with(model: @user, local: true) do |f| %>
   <%= f.label :"姓" %>
-  <%= f.text_field :firstname %>
+  <%= f.text_field :firstname %><br>
   <%= f.label :"名" %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :"自己紹介" %>
+  <%= f.text_field :profile_text %><br>
   <%= f.label :email %>
-  <%= f.email_field :email %>
+  <%= f.email_field :email %><br>
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password %><br>
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "Create my account" %>
+  <%= f.password_field :password_confirmation %><br>
+  <!-- <div>
+    <%= f.label :"プロフィール画像" %>
+    <%= f.file_field :profile_image %>
+  </div>
+  <div>
+    <%= f.label :"カバー画像" %>
+    <%= f.file_field :cover_image %>
+  </div> -->
+  <%= f.submit "アカウントを登録する" %>
 <% end %>
+
+アカウントをお持ちの方は<%= link_to "こちらのログインページへ", new_session_path %>

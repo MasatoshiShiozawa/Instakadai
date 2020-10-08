@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates :firstname,  presence: true, length: { maximum: 30 }
+  # validates :firstname,  presence: true, length: { maximum: 30 }
   validates :name,  presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   has_many :blogs
   has_many :favorites, dependent: :destroy
-  # mount_uploader :profile_image, ImageUploader
+  has_many :favorite_blogs, through: :favorites, source: :blog
+  mount_uploader :profile_image, ImageUploader
   # mount_uploader :cover_image, ImageUploader
 end

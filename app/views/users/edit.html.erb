@@ -1,10 +1,9 @@
 <h1>FACEPAGE　マイプロフィール編集</h1>
 <p>パスワード変更がない場合も、再入力をお願いします。</p>
-
+■プロフィール画像
+<%= image_tag @user.profile_image.url if @user.profile_image? %>
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :"姓" %>
-  <%= f.text_field :firstname %><br>
-  <%= f.label :"名" %>
+  <%= f.label :"名前" %>
   <%= f.text_field :name %><br>
   <%= f.label :"自己紹介" %>
   <%= f.text_area :profile_text, :size=>"50x2" %><br>
@@ -14,6 +13,8 @@
   <%= f.password_field :password %><br>
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %><br>
+  <%= f.label :"プロフィール画像を変更する" %>
+  <%= f.file_field :profile_image %><br>
   <%= f.submit "更新する" %>
 <% end %>
 

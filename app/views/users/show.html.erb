@@ -1,12 +1,13 @@
 <header class="header clearfix">
-  <h1><%= @user.firstname %><%= @user.name %>のページ</h1>
+  <h1><%= @user.name %>のマイページ</h1>
   ■自己紹介<br>
-  <%= @user.profile_text%><br>
-  <%#= image_tag @user.profile_image.url if @user.profile_image? %>
+  <%= @user.profile_text%><br><br>
   <% if @user == current_user %>
-  <%= link_to 'その気持ち、シェアしよう', new_blog_path %>　　
-  <%= link_to 'プロフィール・自己紹介文編集', edit_user_path %><br>
+  <%= link_to '写真をシェアしよう', new_blog_path %>　　
+  <%= link_to 'プロフィール・自己紹介文編集', edit_user_path %>　　
+  <%= link_to 'お気に入り一覧', "/users/#{@user.id}/favorites" %><br>
   <% end %>
+  <%= image_tag @user.profile_image.url if @user.profile_image? %>
 </header>
 <br>
 
@@ -14,10 +15,13 @@
     <div>
       <% @user.blogs.each do |blog| %>
       <div>
-        <p><%= blog.user.firstname %><%= blog.user.name %></p>
+        <p><%= blog.user.name %></p>
         <p><%= blog.created_at %></p>
-        <p><%= blog.content %></p>
-        <p><%= image_tag blog.image.url if blog.image? %></p><br>
+        <p><%= image_tag blog.image.url if blog.image? %> </p>
+        <p><%= blog.content %></p><br>
+        <% if logged_in? %>
+        <%= link_to '詳細を確認する', blog_path(blog.id) %><br>
+        <% end %>
         <hr width="800" noshade>
       </div>
       <% end %>

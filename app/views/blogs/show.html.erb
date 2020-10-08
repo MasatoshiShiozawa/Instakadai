@@ -1,14 +1,14 @@
 <h1>投稿詳細画面</h1>
 <p>内容: <%= @blog.content %></p>
-<p>投稿者名: <%= @blog.user.firstname %><%= @blog.user.name %></p>
+<p>投稿者名: <%= @blog.user.name %></p>
 <p>日時: <%= @blog.created_at %></p>
 <p>
   <%= image_tag @blog.image.url if @blog.image? %>
 </p>
 <% if @blog.user_id == current_user.id %>
   <div>
-    <td><%= link_to "ブログを編集する", "/blogs/#{@blog.id}/edit" %></td>
-    <td><%= link_to 'ブログを削除する', blog_path, method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+    <td><%= link_to "編集する", "/blogs/#{@blog.id}/edit" %></td>
+    <td><%= link_to '削除する', blog_path, method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
   </div>
 <% end %>
 <% unless @blog.user_id == current_user.id %>

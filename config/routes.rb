@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       patch :confirm
     end
   end
+  get "users/:id/favorites" => "users#favorites"
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   # post "users/:id/update" => "users#update"
   # get "users/:id/edit" => "users#edit"
   # post "users/:id/edit" => "users#edit"

@@ -1,0 +1,8 @@
+<h1>いいね！した投稿一覧</h1>
+<% @favorites.each do |favorite| %>
+<%= link_to(favorite.user.name, "/users/#{favorite.user.id}") %><br>
+<%= favorite.created_at %><br>
+<%= favorite.content %><br>
+<%= image_tag favorite.image.url if favorite.image? %><br>
+<hr width="800" noshade>
+<% end %>

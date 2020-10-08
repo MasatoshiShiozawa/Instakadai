@@ -30,10 +30,16 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+  def favorites
+    @user = User.find_by(id: params[:id])
+    @favorites = current_user.favorite_blogs.all
+  end
+
   private
   def user_params
     params.require(:user).permit(:firstname, :name, :email, :password, :profile_text,
-                                 :password_confirmation, :profile_image, :cover_image)
+                                 :password_confirmation, :profile_image)
   end
   def check_user
     unless logged_in?

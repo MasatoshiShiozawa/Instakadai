@@ -14,7 +14,7 @@ class BlogsController < ApplicationController
   def create
     @blog = current_user.blogs.build(blog_params)
     if @blog.save
-      # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
+      ContactMailer.contact_mail(@blog).deliver
       redirect_to blogs_path, notice: "ブログを作成しました！"
     else
       # 入力フォームを再描画します。

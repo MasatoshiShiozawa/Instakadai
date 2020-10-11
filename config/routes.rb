@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
   get "users/:id/favorites" => "users#favorites"
+  get "/" => "blogs#index"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   # post "users/:id/update" => "users#update"
   # get "users/:id/edit" => "users#edit"

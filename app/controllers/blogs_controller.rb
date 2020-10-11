@@ -15,7 +15,7 @@ class BlogsController < ApplicationController
     @blog = current_user.blogs.build(blog_params)
     if @blog.save
       ContactMailer.contact_mail(@blog).deliver
-      redirect_to blogs_path, notice: "ブログを作成しました！"
+      redirect_to blogs_path, notice: "作成しました！"
     else
       # 入力フォームを再描画します。
       render :new
@@ -24,7 +24,7 @@ class BlogsController < ApplicationController
 
   def update
     if @blog.update(blog_params)
-      redirect_to blogs_path, notice: "ブログを編集しました！"
+      redirect_to blogs_path, notice: "編集しました！"
     else
       render :edit
     end

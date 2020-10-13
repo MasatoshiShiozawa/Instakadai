@@ -14,3 +14,7 @@
  *= require_tree .
  *= require_self
  */
+ .footer {
+  background-color: rgba(29,161,242,1.00);
+  height: 15px;
+}

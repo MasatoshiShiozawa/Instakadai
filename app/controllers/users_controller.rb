@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_user, only: [:show]
+  before_action :check_user, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -41,10 +41,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:firstname, :name, :email, :password, :profile_text,
                                  :password_confirmation, :profile_image)
   end
+
   def check_user
-    unless logged_in?
-      flash[:notice] = "ログインもしくはアカウントを作成してください"
-      redirect_to new_session_url
+    @user = User.find(params[:id])
+    unless current_user.id == @user.id
+      flash[:notice] = "編集権限がありません"
+      redirect_to blogs_path
     end
   end
+
 end

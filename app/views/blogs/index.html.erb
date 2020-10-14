@@ -5,7 +5,7 @@
 ■<%= link_to(blog.user.name, "/users/#{blog.user.id}") %><br>
 <%= blog.created_at %><br>
 <p>
-<%= image_tag blog.image.url ,class: "blog_image" %>
+<%= image_tag blog.image.url ,class: "blog_image" if blog.image? %>
 </p>
 <br>
 

@@ -17,7 +17,7 @@
       <div>
         <p><%= blog.user.name %></p>
         <p><%= blog.created_at %></p>
-        <p><%= image_tag blog.image.url ,class: "blog_image" %> </p>
+        <p><%= image_tag blog.image.url ,class: "blog_image" if blog.image? %> </p>
         <p><%= blog.content %></p><br>
         <% if logged_in? %>
         <%= link_to '詳細を確認する', blog_path(blog.id) %><br>

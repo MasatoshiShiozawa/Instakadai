@@ -18,3 +18,11 @@
   background-color: rgba(29,161,242,1.00);
   height: 15px;
 }
+.blog_image{
+  width: 450px;
+  height: auto;
+}
+.user_image{
+  width: 250px;
+  height: auto;
+}

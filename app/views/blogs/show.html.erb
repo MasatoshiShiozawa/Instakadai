@@ -3,7 +3,8 @@
 <p>投稿者名: <%= @blog.user.name %></p>
 <p>日時: <%= @blog.created_at %></p>
 <p>
-  <%= image_tag @blog.image.url if @blog.image? %>
+  <%= image_tag @blog.image.url ,class: "blog_image" %>
+  <%# <%= image_tag @blog.image.url if @blog.image?,class: "blog_image" %>
 </p>
 <% if @blog.user_id == current_user.id %>
   <div>

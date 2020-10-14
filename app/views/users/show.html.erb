@@ -7,7 +7,7 @@
   <%= link_to 'プロフィール・自己紹介文編集', edit_user_path %>　　
   <%= link_to 'お気に入り一覧', "/users/#{@user.id}/favorites" %><br>
   <% end %>
-  <%= image_tag @user.profile_image.url if @user.profile_image? %>
+  <%= image_tag @user.profile_image.url ,class: "user_image" %>
 </div>
 <br>
 
@@ -17,7 +17,7 @@
       <div>
         <p><%= blog.user.name %></p>
         <p><%= blog.created_at %></p>
-        <p><%= image_tag blog.image.url if blog.image? %> </p>
+        <p><%= image_tag blog.image.url ,class: "blog_image" %> </p>
         <p><%= blog.content %></p><br>
         <% if logged_in? %>
         <%= link_to '詳細を確認する', blog_path(blog.id) %><br>

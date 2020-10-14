@@ -3,6 +3,6 @@
 <%= link_to(favorite.user.name, "/users/#{favorite.user.id}") %><br>
 <%= favorite.created_at %><br>
 <%= favorite.content %><br>
-<%= image_tag favorite.image.url if favorite.image? %><br>
+<%= image_tag favorite.image.url ,class: "blog_image" %><br>
 <hr width="800" noshade>
 <% end %>

@@ -2,7 +2,7 @@
 
 <%= form_with(model: @blog, url: confirm_new_or_edit, method: confirm_form_method, local: true) do |form| %>
   <%= form.hidden_field :content %>
-  <%= image_tag(@blog.image.url) ,class: "blog_image" if @blog.image && @blog.image.url %>
+  <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
   <%= form.hidden_field :image_cache %>
   <p>本文：<%= @blog.content %></p>
   <%= form.submit "登録する" %>
